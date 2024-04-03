@@ -94,4 +94,16 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
+
+    //Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.5")
+
+
+    // Multidex
+    implementation("androidx.multidex:multidex:2.0.1")
+
+
+    // Moshi
+    implementation("com.squareup.moshi:moshi:1.14.0")
+
 }

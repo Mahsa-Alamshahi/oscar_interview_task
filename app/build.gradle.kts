@@ -79,4 +79,12 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.8.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
+
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0-beta01")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0-beta01")
+    implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.7.0-beta01")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
+
+
 }

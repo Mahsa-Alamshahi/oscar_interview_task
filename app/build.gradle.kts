@@ -106,4 +106,8 @@ dependencies {
     // Moshi
     implementation("com.squareup.moshi:moshi:1.14.0")
 
+
+    // Logger
+    implementation("com.orhanobut:logger:2.2.0")
+
 }

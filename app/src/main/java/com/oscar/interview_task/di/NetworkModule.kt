@@ -1,5 +1,6 @@
 package com.oscar.interview_task.di
 
+import com.oscar.interview_task.data.data_source.remote.ApiService
 import com.oscar.interview_task.utils.AppConstants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -55,6 +56,12 @@ object NetworkModule {
             .addConverterFactory(gsonConverterFactory)
             .build()
     }
+
+
+    @Singleton
+    @Provides
+    fun provideApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
 
 
 }

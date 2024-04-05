@@ -1,9 +1,12 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
 }
+group = "sh.ory"
+version = "v1.9.0"
 
 android {
     namespace = "com.oscar.interview_task"
@@ -110,4 +113,6 @@ dependencies {
     // Logger
     implementation("com.orhanobut:logger:2.2.0")
 
+    // Lottie
+    implementation("com.airbnb.android:lottie-compose:6.4.0")
 }

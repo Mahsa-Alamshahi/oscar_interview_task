@@ -12,13 +12,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.oscar.interview_task.data.data_source.remote.dto.sign_in_up_flow.Node
+import com.oscar.interview_task.data.data_source.remote.dto.authentication_ui.Node
 
 @Composable
-fun SubmitViewType(node: Node, onClick: () -> Unit) {
+fun SubmitViewType(node: Node,
+                   onGetValue:(String, String) -> Unit,
+                   onClick: () -> Unit) {
+
+
 
     Button(
         onClick = {
+            onGetValue(node.attributes.name, node.attributes.value)
             onClick()
         },
         modifier = Modifier

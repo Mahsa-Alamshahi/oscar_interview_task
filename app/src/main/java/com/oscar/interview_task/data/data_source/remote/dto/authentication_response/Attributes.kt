@@ -1,7 +1,10 @@
-package com.oscar.interview_task.data.data_source.remote.dto.sign_in_up_flow
+package com.oscar.interview_task.data.data_source.remote.dto.authentication_response
 
+import androidx.compose.runtime.Stable
 import com.google.gson.annotations.SerializedName
 
+
+@Stable
 data class Attributes(
     @SerializedName("autocomplete")
     val autocomplete: String,
@@ -10,7 +13,7 @@ data class Attributes(
     @SerializedName("name")
     val name: String,
     @SerializedName("node_type")
-    val node_type: String,
+    val nodeType: String,
     @SerializedName("required")
     val required: Boolean,
     @SerializedName("type")

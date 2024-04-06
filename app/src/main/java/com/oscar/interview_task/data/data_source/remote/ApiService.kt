@@ -1,28 +1,46 @@
 package com.oscar.interview_task.data.data_source.remote
 
-import com.oscar.interview_task.data.data_source.remote.dto.sign_in_up_flow.SignInUpFlow
+import com.oscar.interview_task.data.data_source.remote.dto.authentication_response.AuthenticationResponse
+import com.oscar.interview_task.data.data_source.remote.dto.authentication_ui.AuthenticationUiResponse
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.POST
 import retrofit2.http.Query
+
 
 interface ApiService {
 
-
-
     @Headers("Content-Type:application/json")
     @GET("/self-service/login/api")
-    suspend fun login(
-        @Query("refresh") refresh: Boolean = true,
-        @Query("return_session_token_exchange_code") sessionToken: Boolean = true
-    ): SignInUpFlow
+    suspend fun loginUi(
+    ): AuthenticationUiResponse
+
 
 
 
     @Headers("Content-Type:application/json")
-  @GET("/self-service/registration/api")
-    suspend fun register(
-        @Query("refresh") refresh: Boolean = true,
-        @Query("return_session_token_exchange_code") sessionToken: Boolean = true
-    ): SignInUpFlow
+    @GET("/self-service/registration/api")
+    suspend fun registerUi(
+    ): AuthenticationUiResponse
 
+
+
+
+    @Headers("Content-Type:application/json")
+    @POST("/self-service/login")
+    suspend fun login(
+       @Query("flow") flow: String,
+       @Body requestBody: HashMap<String, String>
+    ): AuthenticationResponse
+
+
+
+
+    @Headers("Content-Type:application/json")
+    @POST("/self-service/registration")
+    suspend fun register(
+        @Query("flow") flow: String,
+        @Body requestBody: HashMap<String, String>
+    ): AuthenticationResponse
 }

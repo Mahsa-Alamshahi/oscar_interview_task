@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.oscar.interview_task.ui.home.HomeScreenRoute
+import com.oscar.interview_task.ui.main.MainScreenRoute
 import com.oscar.interview_task.ui.sign_in.SignInScreenRoute
 import com.oscar.interview_task.ui.sign_up.SignUpScreenRoute
 
@@ -17,15 +18,16 @@ fun NavGraph() {
 
     val navController = rememberNavController()
 
-    NavHost(navController, startDestination = Screen.Home.route) {
-        signInRoute()
-        signUpRoute()
-        homeRoute(navController)
+    NavHost(navController, startDestination = Screen.Main.route) {
+        signInRoute(navController)
+        signUpRoute(navController)
+        mainRoute(navController)
+        homeRoute()
     }
 }
 
 
-fun NavGraphBuilder.signInRoute() {
+fun NavGraphBuilder.signInRoute(navController: NavController) {
     composable(
         route = Screen.SignIn.route,
         enterTransition = {
@@ -42,12 +44,14 @@ fun NavGraphBuilder.signInRoute() {
         },
     ) {
 
-        SignInScreenRoute()
+        SignInScreenRoute(){
+            navController.navigate(Screen.Home.route)
+        }
     }
 }
 
 
-fun NavGraphBuilder.signUpRoute() {
+fun NavGraphBuilder.signUpRoute(navController: NavController) {
     composable(
         route = Screen.SignUp.route,
         enterTransition = {
@@ -65,14 +69,17 @@ fun NavGraphBuilder.signUpRoute() {
     ) {
 
 
-        SignUpScreenRoute()
+        SignUpScreenRoute() {
+            navController.navigate(Screen.Home.route)
+
+        }
     }
 }
 
 
-fun NavGraphBuilder.homeRoute(navController: NavController) {
+fun NavGraphBuilder.mainRoute(navController: NavController) {
     composable(
-        route = Screen.Home.route,
+        route = Screen.Main.route,
         enterTransition = {
             slideIntoContainer(
                 towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
@@ -88,10 +95,30 @@ fun NavGraphBuilder.homeRoute(navController: NavController) {
     ) {
 
 
-        HomeScreenRoute(onSignUpNavigation = {
+        MainScreenRoute(onSignUpNavigation = {
             navController.navigate(Screen.SignUp.route)
         }) {
             navController.navigate(Screen.SignIn.route)
         }
+    }
+}
+
+fun NavGraphBuilder.homeRoute() {
+    composable(
+        route = Screen.Home.route,
+        enterTransition = {
+            slideIntoContainer(
+                towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
+                animationSpec = tween(700)
+            )
+        },
+        exitTransition = {
+            slideOutOfContainer(
+                towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
+                animationSpec = tween(700)
+            )
+        },
+    ) {
+        HomeScreenRoute()
     }
 }

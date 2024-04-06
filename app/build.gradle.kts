@@ -115,4 +115,6 @@ dependencies {
 
     // Lottie
     implementation("com.airbnb.android:lottie-compose:6.4.0")
+
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.0")
 }

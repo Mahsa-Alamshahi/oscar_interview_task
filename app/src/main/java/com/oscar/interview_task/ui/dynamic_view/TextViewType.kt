@@ -9,7 +9,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.oscar.interview_task.data.data_source.remote.dto.sign_in_up_flow.Node
+import com.oscar.interview_task.data.data_source.remote.dto.authentication_ui.Node
 
 @Composable
 fun TextViewType(node: Node){
@@ -25,17 +25,3 @@ fun TextViewType(node: Node){
 }
 
 
-
-@Composable
-@Preview
-fun PreviewTextViewType(){
-
-    Text("text = node.meta.label.text",
-        fontSize = 16.sp,
-        fontWeight = FontWeight.Normal,
-        style = TextStyle(
-            Color.DarkGray
-        ),
-        modifier= Modifier.fillMaxWidth()
-    )
-}

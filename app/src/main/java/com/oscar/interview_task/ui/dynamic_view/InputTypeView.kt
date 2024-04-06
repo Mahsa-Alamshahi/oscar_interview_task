@@ -18,10 +18,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.oscar.interview_task.data.data_source.remote.dto.sign_in_up_flow.Node
+import com.oscar.interview_task.data.data_source.remote.dto.authentication_ui.Node
 
 @Composable
-fun InputTypeView(node: Node, keyboardType: KeyboardType, visualTransformation: VisualTransformation){
+fun InputTypeView(node: Node, keyboardType: KeyboardType, visualTransformation: VisualTransformation, onGetValue:(String, String) -> Unit){
 
 
     var text by rememberSaveable { mutableStateOf("") }
@@ -32,7 +32,10 @@ fun InputTypeView(node: Node, keyboardType: KeyboardType, visualTransformation: 
 
         OutlinedTextField(
             value = text,
-            onValueChange = { text = it },
+            onValueChange = {
+                text = it
+                onGetValue(node.attributes.name, text)
+                            },
             label = {
                 Text(
                     node.meta.label.text,

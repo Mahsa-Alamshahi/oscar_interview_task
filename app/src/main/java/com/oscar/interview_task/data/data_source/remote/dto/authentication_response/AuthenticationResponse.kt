@@ -23,8 +23,8 @@ data class AuthenticationResponse(
     val type: String,
     @SerializedName("ui")
     val ui: Ui,
-    @SerializedName("session_token")
-    val sessionToken: String
+//    @SerializedName("session_token")
+//    val sessionToken: String
 
 
 )

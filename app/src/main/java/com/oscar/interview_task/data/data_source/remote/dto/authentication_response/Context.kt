@@ -7,8 +7,8 @@ import com.google.gson.annotations.SerializedName
 data class Context(
     @SerializedName("reason")
     val reason: String,
-    @SerializedName("actual_length")
-    val actualLength: Int,
-    @SerializedName("min_length")
-    val minLength: Int
+//    @SerializedName("actual_length")
+//    val actualLength: Int,
+//    @SerializedName("min_length")
+//    val minLength: Int
 )

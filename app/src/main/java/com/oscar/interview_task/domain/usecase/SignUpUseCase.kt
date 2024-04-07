@@ -1,6 +1,5 @@
 package com.oscar.interview_task.domain.usecase
 
-import com.orhanobut.logger.Logger
 import com.oscar.interview_task.data.data_source.remote.dto.authentication_response.AuthenticationResponse
 import com.oscar.interview_task.domain.repository.SignUpRepository
 import com.oscar.interview_task.utils.Resource
@@ -22,14 +21,15 @@ class SignUpUseCase @Inject constructor(private val signUpRepository: SignUpRepo
 
             emit(Resource.Loading())
             val signUpResponse = signUpRepository.signUp(flow = flow, requestBody = requestBody)
-            Logger.d("Res : $signUpResponse")
             emit(Resource.Success(signUpResponse))
 
         } catch (e: HttpException) {
             e.printStackTrace()
+            e.response()?.errorBody()
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occured."))
         } catch (e: IOException) {
-            emit(Resource.Error("Couldn't get data."))
+            val errorMessage = e.localizedMessage ?: "Couldn't get data."
+            emit(Resource.Error(errorMessage))
         }
     }
 }

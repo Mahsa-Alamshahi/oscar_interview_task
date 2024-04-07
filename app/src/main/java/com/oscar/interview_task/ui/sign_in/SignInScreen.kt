@@ -70,6 +70,7 @@ fun SignInScreen(getSignInFlow: () -> Unit,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
+
             signInUiState.signIn?.ui?.let {
                 CheckViewType(it.nodes){map ->
                     signInClicked.value = true

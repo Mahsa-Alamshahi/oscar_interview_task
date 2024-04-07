@@ -24,7 +24,8 @@ class SignInUiUseCase @Inject constructor(private val signInRepository: SignInRe
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occured."))
         } catch (e: IOException) {
             e.printStackTrace()
-            emit(Resource.Error("Couldn't get data."))
+            val errorMessage = e.localizedMessage ?: "Couldn't get data."
+            emit(Resource.Error(errorMessage))
         }
 
     }

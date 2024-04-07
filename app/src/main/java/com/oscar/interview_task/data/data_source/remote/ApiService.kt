@@ -13,16 +13,14 @@ interface ApiService {
 
     @Headers("Content-Type:application/json")
     @GET("/self-service/login/api")
-    suspend fun loginUi(
-    ): AuthenticationUiResponse
+    suspend fun loginUi(): AuthenticationUiResponse
 
 
 
 
     @Headers("Content-Type:application/json")
     @GET("/self-service/registration/api")
-    suspend fun registerUi(
-    ): AuthenticationUiResponse
+    suspend fun registerUi(): AuthenticationUiResponse
 
 
 

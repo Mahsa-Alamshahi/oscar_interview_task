@@ -1,5 +1,7 @@
 package com.oscar.interview_task.ui.home
 
+import android.app.Activity
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -25,6 +28,8 @@ fun HomeScreenRoute() {
 @Composable
 fun HomeScreen() {
 
+    val activity = LocalContext.current as Activity
+
 
     Column(
         modifier= Modifier.fillMaxSize().padding(16.dp),
@@ -32,9 +37,11 @@ fun HomeScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
+
         Text(text = "Welcome to Ory.",
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp)
+
 
         Image(
             painter = painterResource(id = R.drawable.welcome),
@@ -44,7 +51,10 @@ fun HomeScreen() {
                 .padding(32.dp)
         )
 
+    }
 
+    BackHandler() {
+        activity.finish()
     }
 
 }
